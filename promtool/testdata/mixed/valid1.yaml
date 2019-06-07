@@ -1,0 +1,13 @@
+groups:
+  - name: valid-data-1
+    rules:
+      - record: job:test_valid:sum
+        expr: sum(valid_test_data) by (job)
+      - alert: testalert
+        expr: valid_test_data != 0
+        for: 1h
+        labels:
+          severity: test
+        annotations:
+          summary: "This is a valid test alert"
+          description: "This is a valid test description"

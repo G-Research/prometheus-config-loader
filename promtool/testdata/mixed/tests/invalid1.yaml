@@ -1,0 +1,14 @@
+rule_files: 
+  - valid1.yaml
+evaluation_interval: 1m
+tests:
+  - interval: 1m
+    input_series:
+    - series: valid_test_data{job="something"}
+      values: '1+1x120'
+    - series: valid_test_data{job="somethingelse"}
+      values: '2+2x120'
+    alert_rule_test:
+      - alertname: testalert
+        eval_time: 64m
+        exp_alerts: null

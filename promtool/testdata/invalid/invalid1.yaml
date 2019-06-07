@@ -1,0 +1,13 @@
+groups:
+  - name: valid-data-1
+    rules:
+      - record: job:test_invalid:sum
+        expr: sum(valid_test_data) by (job) SOMEINVALIDPROMQL
+      - alert: TestDataIsValid
+        expr: job:test_valid:sum > 0
+        for: 1h
+        labels:
+          severity: test
+        annotations:
+          summary: "This is a valid test alert"
+          description: "This is a valid test description"
