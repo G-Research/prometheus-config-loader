@@ -6,7 +6,7 @@ to work.
 
 ## The design rationale
 
-This tool was designed to fulfill one very specific need. However, we think
+This tool was designed to fulfil one very specific need. However, we think
 this is a need shared by many
 
 We run multiple clusters, with almost-identical system prometheus
@@ -28,13 +28,13 @@ We also think that it's bad if you end up with a PrometheusRule CRD that
 is not parseable, so to avoid this, we actually create PrometheusRules
 using the prometheus-operator-provided CRD, through the Kubernetes API.
 
-There are cases where these may need to be disabled, however, so there are
-checks for that.
+There are cases where these extra checks may need to be disabled,
+however, so there are flags for that.
 
 ## Directory structure
 
-The tool expects a directory full of rule files, wit hhte unit tests
-in a subdirectory names "tests". A hypothetical rules directory is
+The tool expects a directory full of rule files, with the unit tests
+in a subdirectory named "tests". A hypothetical rules directory layout is
 sketched below:
 
 ```
@@ -72,10 +72,10 @@ expanded. Unit-testing is done with a (fake) context named `unittest`.
 | flag | description |
 |-----:|:------------|
 | --contexts | A comma-separated lists of the context names you want to push rule(s) to. |
-| --dry-run | Run throuhg hte normal process, but instead of sending the rules 
-| --kubeconfig | Path of youtr kubernetes config file (defaults to $HOME/.kube/config |
+| --dry-run | Run through the normal process, but instead of sending the rules to the API server, simply render the PrometheusRulesList to stdout. |
+| --kubeconfig | Path of your kubernetes config file (defaults to $HOME/.kube/config |
 | --namespace | Namespace you want the rules created in. |
 | --prometheus | Name of the prometheus you are pushing configurations for. |
 | --skip-syntax-check | Do not run the syntax-checking |
-| --skip-unit-tests | Do not run the unit tests |to a kubernetes API server, simply print them (as JSON) to stdout. |
+| --skip-unit-tests | Do not run the unit tests |
 

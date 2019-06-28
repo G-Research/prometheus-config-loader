@@ -170,7 +170,7 @@ func main() {
 	// config file" function, but this is probably good enough for
 	// now.
 	kubeflag := flag.String("kubeconfig", "", "Kubernetes configuration file, set this to the empty string if the command is running inside a kubernetes pod.")
-	flagContexts := flag.String("contexts", "", "Comma-separated list of contextst to push configuration to.")
+	flagContexts := flag.String("contexts", "", "Comma-separated list of contexts to push configuration to.")
 	prometheus := flag.String("prometheus", "", "Name of the prometheus to push configuration for.")
 	namespace := flag.String("namespace", "", "The namespace we should create PrometheusRule objects in.")
 	dryRun := flag.Bool("dry-run", false, "Skip uploading, instead print the resulting PrometheusRuleList to stdout.")
