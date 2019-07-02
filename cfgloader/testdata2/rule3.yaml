@@ -1,0 +1,6 @@
+groups:
+  - name: bob
+    rules:
+      - record: kate
+        expr: sum(metric{label="value"}) by (label)
+

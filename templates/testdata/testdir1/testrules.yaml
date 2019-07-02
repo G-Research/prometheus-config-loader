@@ -1,0 +1,7 @@
+blah:
+  - This is a test file, in default the next line is foo
+  - <{[ .Values.value1 ]}>
+  - And the next one is bar
+  - <{[ .Values.value2 ]}>
+moreblah: This golang template shoudl be left alone {{ .Complicated.text }}
+andevenmore: In conext1, the context is <{[ .Values.context ]}>

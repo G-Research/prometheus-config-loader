@@ -1,0 +1,5 @@
+groups:
+  - name: bob
+    rules:
+      - record: kate
+        expr: 1.7
