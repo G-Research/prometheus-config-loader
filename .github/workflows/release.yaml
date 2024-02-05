@@ -1,0 +1,36 @@
+name: Release
+
+on:
+  workflow_run:
+    types: [completed]
+    workflows: [CI]
+    branches:
+      - v*
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: "Release"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          # Checkout the tag that triggered the workflow.
+          ref: ${{ github.event.workflow_run.head_branch }}
+
+      - name: Fetch Git tags
+        run: git fetch --force --tags
+
+      - name: Run GoReleaser
+        uses: goreleaser/goreleaser-action@v5
+        with:
+          distribution: goreleaser
+          version: latest
+          args: release --clean
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
